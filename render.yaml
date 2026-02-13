@@ -1,12 +1,15 @@
+# Blueprint configuration for automatic deployment
+name: bdfolio-template
+
 services:
   - type: web
-    # এটি ডিফল্ট নাম হিসেবে থাকবে, তবে ইউজার চাইলে পরিবর্তন করতে পারবে
     name: bdfolio
     runtime: static
     buildCommand: npm install && npm run build
-    publishPath: ./dist
     staticPublishPath: ./dist
+    # Routing for Single Page Application (SPA)
     routes:
       - type: rewrite
-        from: /*
-        to: /index.html
+        source: /*
+        destination: /index.html
+        
