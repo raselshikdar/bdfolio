@@ -1,6 +1,13 @@
-import { User } from "lucide-react";
+import { User, MapPin, Briefcase, GraduationCap, Heart } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionBadge from "@/components/SectionBadge";
+
+const highlights = [
+  { icon: GraduationCap, text: "B.Sc. in Computer Science — University of Dhaka" },
+  { icon: Briefcase, text: "3+ Years in Full-Stack Development" },
+  { icon: Heart, text: "Open-Source Contributor & Community Speaker" },
+  { icon: MapPin, text: "Based in Dhaka, Bangladesh 🇧🇩" },
+];
 
 const AboutSection = () => (
   <section id="about" className="py-16">
@@ -29,20 +36,16 @@ const AboutSection = () => (
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <div className="glass rounded-2xl p-6 space-y-4">
-            <h3 className="font-serif text-xl font-semibold text-foreground">Quick Highlights</h3>
-            <ul className="space-y-2">
-              {[
-                "🎓 Computer Science Graduate",
-                "💼 3+ Years in Full-Stack Development",
-                "🌍 Open-Source Contributor",
-                "🇧🇩 Proudly Bangladeshi",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-foreground/80 text-sm">
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="glass rounded-2xl p-6 space-y-3">
+            <h3 className="font-serif text-xl font-semibold text-foreground mb-4">Quick Highlights</h3>
+            {highlights.map(({ icon: Icon, text }) => (
+              <div key={text} className="flex items-center gap-3 text-foreground/80 text-sm">
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <Icon size={15} className="text-primary" />
+                </div>
+                <span>{text}</span>
+              </div>
+            ))}
           </div>
         </ScrollReveal>
       </div>
