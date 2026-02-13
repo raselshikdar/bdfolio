@@ -1,4 +1,5 @@
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, Briefcase } from "lucide-react";
+import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionBadge from "@/components/SectionBadge";
 
@@ -11,10 +12,10 @@ interface TimelineItem {
 }
 
 const items: TimelineItem[] = [
-  { year: "2024 – Present", title: "Senior Frontend Engineer", org: "Tech Corp", description: "Leading the frontend architecture for a SaaS platform serving 100K+ users.", type: "work" },
-  { year: "2022 – 2024", title: "Full-Stack Developer", org: "StartupXYZ", description: "Built and shipped multiple products from zero to production using React & Node.js.", type: "work" },
-  { year: "2021 – 2022", title: "Junior Developer", org: "Agency Co.", description: "Developed responsive websites and web applications for diverse clients.", type: "work" },
-  { year: "2017 – 2021", title: "B.Sc. in Computer Science", org: "University of Dhaka", description: "Graduated with honors. Focused on algorithms, data structures, and web technologies.", type: "education" },
+  { year: "2024 – Present", title: "Senior Frontend Engineer", org: "Tech Corp", description: "Leading the frontend architecture for a SaaS platform serving 100K+ users. Architected the design system and improved performance by 40%.", type: "work" },
+  { year: "2022 – 2024", title: "Full-Stack Developer", org: "StartupXYZ", description: "Built and shipped multiple products from zero to production using React & Node.js. Led a team of 4 developers.", type: "work" },
+  { year: "2021 – 2022", title: "Junior Developer", org: "Agency Co.", description: "Developed responsive websites and web applications for diverse clients across fintech and e-commerce.", type: "work" },
+  { year: "2017 – 2021", title: "B.Sc. in Computer Science", org: "University of Dhaka", description: "Graduated with honors. Focused on algorithms, data structures, and web technologies. Published 2 research papers.", type: "education" },
 ];
 
 const TimelineSection = () => (
@@ -35,10 +36,21 @@ const TimelineSection = () => (
               >
                 <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-accent border-4 border-background z-10 mt-5" />
                 <div className="hidden md:block md:w-1/2" />
-                <div className="ml-12 md:ml-0 md:w-1/2 glass rounded-xl p-5 shadow-md hover:shadow-lg transition-shadow">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-accent">
-                    {item.year}
-                  </span>
+                <motion.div
+                  whileHover={{ y: -3 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="ml-12 md:ml-0 md:w-1/2 glass rounded-xl p-5 shadow-md hover:shadow-lg transition-shadow"
+                >
+                  <div className="flex items-center gap-2 mb-1">
+                    {item.type === "education" ? (
+                      <GraduationCap size={14} className="text-primary" />
+                    ) : (
+                      <Briefcase size={14} className="text-primary" />
+                    )}
+                    <span className="text-xs font-semibold uppercase tracking-wider text-accent">
+                      {item.year}
+                    </span>
+                  </div>
                   <h3 className="font-serif text-lg font-bold text-foreground mt-1">
                     {item.title}
                   </h3>
@@ -46,7 +58,7 @@ const TimelineSection = () => (
                   <p className="text-muted-foreground text-sm mt-1.5 leading-relaxed">
                     {item.description}
                   </p>
-                </div>
+                </motion.div>
               </div>
             </ScrollReveal>
           ))}
