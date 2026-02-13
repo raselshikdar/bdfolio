@@ -1,15 +1,15 @@
+# This name is only for the Blueprint dashboard in Render
+name: bdfolio-template
+
 services:
   - type: web
-    name: bdfolio
+    # No 'name' field means Render will prompt the user to give a name 
+    # or it will default to their repository name (e.g., bdfolio)
     runtime: static
     buildCommand: npm install && npm run build
     publishPath: ./dist
+    staticPublishPath: ./dist
     routes:
       - type: rewrite
         from: /*
         to: /index.html
-    # পারফরম্যান্সের জন্য ক্যাশিং সেটিংস
-    headers:
-      - path: /*
-        name: Cache-Control
-        value: max-age=31536000
