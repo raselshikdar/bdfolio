@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Github, Linkedin, Twitter, Send } from "lucide-react";
+import { Send } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const ContactSection = () => {
@@ -10,92 +9,77 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Formspree or mailto fallback
     window.location.href = `mailto:your@email.com?subject=Portfolio Contact from ${form.name}&body=${form.message}%0A%0AFrom: ${form.email}`;
   };
 
   return (
-    <section id="contact" className="py-24 jamdani-pattern-strong">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="py-16 jamdani-pattern-strong">
+      <div className="container mx-auto px-6 max-w-7xl">
         <ScrollReveal>
           <p className="text-sm font-medium tracking-widest uppercase text-accent mb-2 text-center">
             Let's Connect
           </p>
-          <h2 className="text-4xl font-bold font-serif text-foreground mb-12 text-center">
+          <h2 className="text-3xl font-bold font-serif text-foreground mb-10 text-center">
             Get in Touch
           </h2>
         </ScrollReveal>
 
-        <div className="max-w-xl mx-auto">
+        <div className="max-w-lg mx-auto">
           <ScrollReveal delay={0.1}>
-            <form onSubmit={handleSubmit} className="glass rounded-2xl p-8 space-y-5 shadow-lg">
-              <div>
-                <Input
-                  placeholder="Your Name"
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+            <form onSubmit={handleSubmit} className="glass rounded-2xl p-6 space-y-4 shadow-lg">
+              {/* Floating label inputs */}
+              {[
+                { key: "name", label: "Your Name", type: "text" },
+                { key: "email", label: "Your Email", type: "email" },
+              ].map(({ key, label, type }) => (
+                <div key={key} className="relative">
+                  <input
+                    type={type}
+                    required
+                    value={form[key as keyof typeof form]}
+                    onChange={(e) => setForm({ ...form, [key]: e.target.value })}
+                    className="peer w-full bg-background/50 border border-input rounded-lg px-4 pt-5 pb-2 text-sm text-foreground placeholder-transparent focus:outline-none focus:ring-2 focus:ring-ring"
+                    placeholder={label}
+                    id={`contact-${key}`}
+                  />
+                  <label
+                    htmlFor={`contact-${key}`}
+                    className="absolute left-4 top-2 text-[10px] font-medium text-muted-foreground transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-primary"
+                  >
+                    {label}
+                  </label>
+                </div>
+              ))}
+
+              <div className="relative">
+                <textarea
                   required
-                  className="bg-background/50"
-                />
-              </div>
-              <div>
-                <Input
-                  type="email"
-                  placeholder="Your Email"
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  required
-                  className="bg-background/50"
-                />
-              </div>
-              <div>
-                <Textarea
-                  placeholder="Your Message"
-                  rows={5}
+                  rows={4}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  required
-                  className="bg-background/50"
+                  className="peer w-full bg-background/50 border border-input rounded-lg px-4 pt-5 pb-2 text-sm text-foreground placeholder-transparent focus:outline-none focus:ring-2 focus:ring-ring resize-none"
+                  placeholder="Your Message"
+                  id="contact-message"
                 />
+                <label
+                  htmlFor="contact-message"
+                  className="absolute left-4 top-2 text-[10px] font-medium text-muted-foreground transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-primary"
+                >
+                  Your Message
+                </label>
               </div>
-              <Button
-                type="submit"
-                className="w-full bg-accent text-accent-foreground hover:bg-accent/90 rounded-full py-3"
-              >
-                <Send size={16} className="mr-2" /> Send Message
-              </Button>
+
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <Button
+                  type="submit"
+                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90 rounded-full py-3 text-sm font-semibold"
+                >
+                  <Send size={14} className="mr-2" /> Send Message
+                </Button>
+              </motion.div>
             </form>
           </ScrollReveal>
-
-          {/* Social icons */}
-          <ScrollReveal delay={0.2}>
-            <div className="flex justify-center gap-6 mt-10">
-              {[
-                { icon: Github, href: "https://github.com", label: "GitHub" },
-                { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-                { icon: Twitter, href: "https://x.com", label: "X" },
-              ].map(({ icon: Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
-                  aria-label={label}
-                >
-                  <Icon size={20} />
-                </a>
-              ))}
-            </div>
-          </ScrollReveal>
         </div>
-
-        {/* Footer */}
-        <ScrollReveal>
-          <p className="text-center text-sm text-muted-foreground mt-16">
-            © {new Date().getFullYear()} Your Name. Crafted with ❤️ from Bangladesh.
-          </p>
-        </ScrollReveal>
       </div>
     </section>
   );

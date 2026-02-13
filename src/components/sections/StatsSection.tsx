@@ -43,32 +43,32 @@ function useCountUp(target: number, duration = 2000) {
 }
 
 const StatsSection = () => (
-  <section className="py-24">
-    <div className="container mx-auto px-6">
+  <section className="py-16">
+    <div className="container mx-auto px-6 max-w-7xl">
       <ScrollReveal>
         <p className="text-sm font-medium tracking-widest uppercase text-accent mb-2 text-center">
           By the Numbers
         </p>
-        <h2 className="text-4xl font-bold font-serif text-foreground mb-16 text-center">
+        <h2 className="text-3xl font-bold font-serif text-foreground mb-10 text-center">
           Quick Stats
         </h2>
       </ScrollReveal>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat, i) => {
           const { count, ref } = useCountUp(stat.value);
           return (
-            <ScrollReveal key={stat.label} delay={i * 0.1}>
+            <ScrollReveal key={stat.label} delay={i * 0.08}>
               <div
                 ref={ref}
-                className="glass rounded-2xl p-8 text-center hover:shadow-xl transition-shadow"
+                className="glass rounded-xl p-6 text-center hover:shadow-lg transition-shadow"
               >
-                <stat.icon className="mx-auto text-primary mb-4" size={32} strokeWidth={1.5} />
-                <p className="text-4xl md:text-5xl font-bold font-serif text-foreground">
+                <stat.icon className="mx-auto text-primary mb-3" size={28} strokeWidth={1.5} />
+                <p className="text-3xl md:text-4xl font-bold font-serif text-foreground">
                   {count}
                   <span className="text-accent">{stat.suffix}</span>
                 </p>
-                <p className="text-sm text-muted-foreground mt-2">{stat.label}</p>
+                <p className="text-xs text-muted-foreground mt-1.5">{stat.label}</p>
               </div>
             </ScrollReveal>
           );
