@@ -1,12 +1,9 @@
 services:
-  - type: static
+  - type: web
     name: bdfolio
-    env: static
-    # বিল্ড কমান্ড যা ডিপেন্ডেন্সি ইন্সটল করবে এবং প্রোডাকশন ফাইল তৈরি করবে
+    runtime: static
     buildCommand: npm install && npm run build
-    # বিল্ড হওয়ার পর কোন ফোল্ডারটি পাবলিশ করা হবে (Vite এর জন্য সাধারণত dist)
     publishPath: ./dist
-    # স্পা (SPA) রাউটিং সাপোর্ট করার জন্য রিরাইট রুল
     routes:
       - type: rewrite
         from: /*
