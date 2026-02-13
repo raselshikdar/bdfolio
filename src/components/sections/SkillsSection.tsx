@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+import { Cpu } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import SectionBadge from "@/components/SectionBadge";
 import {
   Code2, Database, Globe, Laptop, Server, Smartphone,
   Layout, GitBranch, Cloud, Terminal, Palette, Boxes
@@ -28,14 +30,7 @@ const skillCategories = [
 const SkillsSection = () => (
   <section id="skills" className="py-16">
     <div className="container mx-auto px-6 max-w-7xl">
-      <ScrollReveal>
-        <p className="text-sm font-medium tracking-widest uppercase text-accent mb-2">
-          What I Work With
-        </p>
-        <h2 className="text-3xl font-bold font-serif text-foreground mb-10">
-          Skills & Technologies
-        </h2>
-      </ScrollReveal>
+      <SectionBadge label="What I Work With" title="Skills & Technologies" icon={Cpu} />
     </div>
 
     {/* Marquee */}

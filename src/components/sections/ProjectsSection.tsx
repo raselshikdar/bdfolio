@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Layers } from "lucide-react";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
+import SectionBadge from "@/components/SectionBadge";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -65,14 +66,7 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="py-16 jamdani-pattern">
       <div className="container mx-auto px-6 max-w-7xl">
-        <ScrollReveal>
-          <p className="text-sm font-medium tracking-widest uppercase text-accent mb-2">
-            My Work & Writing
-          </p>
-          <h2 className="text-3xl font-bold font-serif text-foreground mb-10">
-            Projects & Blogs
-          </h2>
-        </ScrollReveal>
+        <SectionBadge label="My Work & Writing" title="Projects & Blogs" icon={Layers} variant="red" />
 
         <Tabs defaultValue="all" className="w-full">
           <ScrollReveal>

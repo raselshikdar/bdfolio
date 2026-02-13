@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Briefcase, Code2, FolderOpen, Users } from "lucide-react";
+import { Briefcase, Code2, FolderOpen, Users, BarChart3 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import SectionBadge from "@/components/SectionBadge";
 
 const stats = [
   { label: "Projects Done", value: 50, suffix: "+", icon: FolderOpen },
@@ -45,14 +46,7 @@ function useCountUp(target: number, duration = 2000) {
 const StatsSection = () => (
   <section className="py-16">
     <div className="container mx-auto px-6 max-w-7xl">
-      <ScrollReveal>
-        <p className="text-sm font-medium tracking-widest uppercase text-accent mb-2 text-center">
-          By the Numbers
-        </p>
-        <h2 className="text-3xl font-bold font-serif text-foreground mb-10 text-center">
-          Quick Stats
-        </h2>
-      </ScrollReveal>
+      <SectionBadge label="By the Numbers" title="Quick Stats" icon={BarChart3} />
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat, i) => {
