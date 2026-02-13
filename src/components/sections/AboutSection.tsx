@@ -1,20 +1,20 @@
 import ScrollReveal from "@/components/ScrollReveal";
 
 const AboutSection = () => (
-  <section id="about" className="py-24">
-    <div className="container mx-auto px-6">
+  <section id="about" className="py-16">
+    <div className="container mx-auto px-6 max-w-7xl">
       <ScrollReveal>
         <p className="text-sm font-medium tracking-widest uppercase text-accent mb-2">
           About Me
         </p>
-        <h2 className="text-4xl font-bold font-serif text-foreground mb-12">
+        <h2 className="text-3xl font-bold font-serif text-foreground mb-10">
           My Journey
         </h2>
       </ScrollReveal>
 
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="grid md:grid-cols-2 gap-10 items-center">
         <ScrollReveal delay={0.1}>
-          <div className="space-y-5 text-muted-foreground leading-relaxed">
+          <div className="space-y-4 text-muted-foreground leading-relaxed text-sm">
             <p>
               Growing up in Bangladesh, I was surrounded by rich artistry — from the intricate
               weaving of Jamdani to the vivid storytelling of Rickshaw art. These influences
@@ -34,16 +34,16 @@ const AboutSection = () => (
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <div className="glass rounded-2xl p-8 space-y-6">
-            <h3 className="font-serif text-2xl font-semibold text-foreground">Quick Highlights</h3>
-            <ul className="space-y-3">
+          <div className="glass rounded-2xl p-6 space-y-4">
+            <h3 className="font-serif text-xl font-semibold text-foreground">Quick Highlights</h3>
+            <ul className="space-y-2">
               {[
                 "🎓 Computer Science Graduate",
                 "💼 3+ Years in Full-Stack Development",
                 "🌍 Open-Source Contributor",
                 "🇧🇩 Proudly Bangladeshi",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-foreground/80">
+                <li key={item} className="flex items-start gap-3 text-foreground/80 text-sm">
                   <span>{item}</span>
                 </li>
               ))}

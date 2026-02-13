@@ -46,6 +46,39 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  .dark {
+    --background: 0 0% 10%;
+    --foreground: 30 25% 92%;
+
+    --card: 0 0% 13%;
+    --card-foreground: 30 25% 92%;
+
+    --popover: 0 0% 13%;
+    --popover-foreground: 30 25% 92%;
+
+    --primary: 160 100% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 16%;
+    --secondary-foreground: 30 25% 85%;
+
+    --muted: 0 0% 18%;
+    --muted-foreground: 30 10% 60%;
+
+    --accent: 355 90% 56%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 160 100% 30%;
+
+    --terracotta: 16 60% 45%;
+    --terracotta-foreground: 0 0% 100%;
+  }
 }
 
 @layer base {
@@ -53,7 +86,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground font-sans transition-colors duration-300;
     font-family: 'Inter', sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -72,10 +105,11 @@
 
 /* Glassmorphism */
 .glass {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  @apply bg-card/60 backdrop-blur-xl border border-border/50;
+}
+
+.dark .glass {
+  @apply bg-card/40 border-border/30;
 }
 
 /* Marquee */
@@ -100,4 +134,18 @@
     hsl(40, 80%, 55%) 12px
   ) 6;
   padding: 2rem;
+}
+
+/* Rickshaw line for header */
+.rickshaw-line {
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    hsl(160, 100%, 20%) 0px,
+    hsl(160, 100%, 20%) 8px,
+    hsl(355, 90%, 56%) 8px,
+    hsl(355, 90%, 56%) 16px,
+    hsl(40, 80%, 55%) 16px,
+    hsl(40, 80%, 55%) 24px
+  );
 }
