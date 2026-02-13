@@ -1,16 +1,11 @@
+import { User } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import SectionBadge from "@/components/SectionBadge";
 
 const AboutSection = () => (
   <section id="about" className="py-16">
     <div className="container mx-auto px-6 max-w-7xl">
-      <ScrollReveal>
-        <p className="text-sm font-medium tracking-widest uppercase text-accent mb-2">
-          About Me
-        </p>
-        <h2 className="text-3xl font-bold font-serif text-foreground mb-10">
-          My Journey
-        </h2>
-      </ScrollReveal>
+      <SectionBadge label="About Me" title="My Journey" icon={User} />
 
       <div className="grid md:grid-cols-2 gap-10 items-center">
         <ScrollReveal delay={0.1}>

@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Send } from "lucide-react";
+import { Send, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
+import SectionBadge from "@/components/SectionBadge";
 
 const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -15,14 +16,7 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-16 jamdani-pattern-strong">
       <div className="container mx-auto px-6 max-w-7xl">
-        <ScrollReveal>
-          <p className="text-sm font-medium tracking-widest uppercase text-accent mb-2 text-center">
-            Let's Connect
-          </p>
-          <h2 className="text-3xl font-bold font-serif text-foreground mb-10 text-center">
-            Get in Touch
-          </h2>
-        </ScrollReveal>
+        <SectionBadge label="Let's Connect" title="Get in Touch" icon={Mail} variant="red" />
 
         <div className="max-w-lg mx-auto">
           <ScrollReveal delay={0.1}>

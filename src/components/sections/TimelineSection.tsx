@@ -1,4 +1,6 @@
+import { GraduationCap } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import SectionBadge from "@/components/SectionBadge";
 
 interface TimelineItem {
   year: string;
@@ -18,14 +20,7 @@ const items: TimelineItem[] = [
 const TimelineSection = () => (
   <section id="experience" className="py-16 jamdani-pattern">
     <div className="container mx-auto px-6 max-w-7xl">
-      <ScrollReveal>
-        <p className="text-sm font-medium tracking-widest uppercase text-accent mb-2">
-          Experience & Education
-        </p>
-        <h2 className="text-3xl font-bold font-serif text-foreground mb-12">
-          My Timeline
-        </h2>
-      </ScrollReveal>
+      <SectionBadge label="Experience & Education" title="My Timeline" icon={GraduationCap} variant="red" />
 
       <div className="relative">
         <div className="absolute left-4 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-primary/20" />
